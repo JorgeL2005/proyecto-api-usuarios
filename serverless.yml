@@ -12,8 +12,9 @@ provider:
     TABLE_NAME: ${sls:stage}-t_usuarios # Nombre dinámico de la tabla DynamoDB
 
 functions:
-  ${sls:stage}-CrearUsuario:
+  CrearUsuario:
     handler: CrearUsuario.lambda_handler
+    name: ${sls:service}-${sls:stage}-CrearUsuario # Nombre compatible con CloudFormation
     events:
       - http:
           path: /usuarios/crear
@@ -21,8 +22,9 @@ functions:
           cors: true
           integration: lambda
 
-  ${sls:stage}-LoginUsuario:
+  LoginUsuario:
     handler: LoginUsuario.lambda_handler
+    name: ${sls:service}-${sls:stage}-LoginUsuario
     events:
       - http:
           path: /usuarios/login
@@ -30,8 +32,9 @@ functions:
           cors: true
           integration: lambda
 
-  ${sls:stage}-ObetnerPerfil:
+  ObtenerPerfil:
     handler: ObetnerPerfil.lambda_handler
+    name: ${sls:service}-${sls:stage}-ObtenerPerfil
     events:
       - http:
           path: /usuarios/perfil
@@ -43,8 +46,9 @@ functions:
             identitySource: method.request.header.Authorization
             resultTtlInSeconds: 300
 
-  ${sls:stage}-EliminarUsuario:
+  EliminarUsuario:
     handler: EliminarUsuario.lambda_handler
+    name: ${sls:service}-${sls:stage}-EliminarUsuario
     events:
       - http:
           path: /usuarios/eliminar
