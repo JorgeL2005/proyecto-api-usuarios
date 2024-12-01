@@ -14,7 +14,7 @@ provider:
 functions:
   CrearUsuario:
     handler: CrearUsuario.lambda_handler
-    name: ${sls:service}-${sls:stage}-CrearUsuario # Nombre compatible con CloudFormation
+    name: ${sls:stage}-CrearUsuario # Nombre compatible con CloudFormation
     events:
       - http:
           path: /usuarios/crear
@@ -24,7 +24,7 @@ functions:
 
   LoginUsuario:
     handler: LoginUsuario.lambda_handler
-    name: ${sls:service}-${sls:stage}-LoginUsuario
+    name: ${sls:stage}-LoginUsuario
     events:
       - http:
           path: /usuarios/login
@@ -34,7 +34,7 @@ functions:
 
   ObtenerPerfil:
     handler: ObetnerPerfil.lambda_handler
-    name: ${sls:service}-${sls:stage}-ObtenerPerfil
+    name: ${sls:stage}-ObtenerPerfil
     events:
       - http:
           path: /usuarios/perfil
@@ -48,7 +48,7 @@ functions:
 
   EliminarUsuario:
     handler: EliminarUsuario.lambda_handler
-    name: ${sls:service}-${sls:stage}-EliminarUsuario
+    name: ${sls:stage}-EliminarUsuario
     events:
       - http:
           path: /usuarios/eliminar
